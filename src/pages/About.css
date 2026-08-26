@@ -1,0 +1,293 @@
+/* ==========================================================================
+   About — the birth history
+   ========================================================================== */
+
+.story {
+  display: grid;
+  gap: clamp(26px, 3.4vw, 52px);
+  align-items: center;
+}
+
+.story__frame {
+  aspect-ratio: 4 / 3;
+}
+
+.story__cap {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 10px;
+  margin-top: 12px;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+@media (min-width: 880px) {
+  .story {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  }
+  .story__frame {
+    aspect-ratio: 5 / 6;
+  }
+}
+
+/* --- Creed pullquote ------------------------------------------------------- */
+
+.creed {
+  display: grid;
+  justify-items: center;
+  text-align: center;
+  gap: 20px;
+  padding-block: clamp(50px, 6.5vw, 92px);
+}
+
+.creed__horizon {
+  color: var(--beacon);
+}
+
+.creed__quote {
+  margin: 0;
+  max-width: 32ch;
+  font-family: var(--display);
+  font-size: clamp(1.35rem, 3.4vw, 2.5rem);
+  line-height: 1.12;
+  letter-spacing: -0.013em;
+  color: var(--ink);
+}
+
+/* --- Why the name ---------------------------------------------------------- */
+
+.name-grid {
+  display: grid;
+  gap: clamp(26px, 3.4vw, 52px);
+  align-items: center;
+}
+
+.name-grid__frame {
+  aspect-ratio: 4 / 3;
+}
+
+.creed-list {
+  display: grid;
+  gap: 0;
+  margin-block: 4px 24px;
+  border-top: 1px solid var(--rule-soft);
+}
+
+.creed-list li {
+  padding-block: 13px;
+  border-bottom: 1px solid var(--rule-soft);
+  font-family: var(--display);
+  font-size: clamp(1.1rem, 2.2vw, 1.5rem);
+  letter-spacing: -0.009em;
+  line-height: 1.2;
+  color: var(--muted);
+}
+
+.creed-list__turn {
+  color: var(--ink) !important;
+  font-style: italic;
+}
+
+@media (min-width: 900px) {
+  .name-grid {
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+  }
+  .name-grid__frame {
+    aspect-ratio: 3 / 4;
+  }
+}
+
+/* --- The mark -------------------------------------------------------------- */
+
+.mark__grid {
+  display: grid;
+  gap: clamp(26px, 3.4vw, 48px);
+  align-items: center;
+}
+
+.mark__figure {
+  padding: clamp(22px, 3.4vw, 44px);
+  background: var(--white);
+  border: 1px solid var(--rule-soft);
+  border-radius: 3px;
+}
+
+.mark__figure img {
+  width: 100%;
+  height: auto;
+}
+
+.mark__notes {
+  display: grid;
+}
+
+.mark__note {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  gap: 4px 14px;
+  padding-block: 16px;
+  border-top: 1px solid var(--rule-soft);
+}
+
+.mark__note:last-child {
+  border-bottom: 1px solid var(--rule-soft);
+}
+
+.mark__note .index-num {
+  padding-top: 4px;
+}
+
+.mark__part {
+  font-size: 1.05rem;
+  letter-spacing: -0.018em;
+}
+
+.mark__text {
+  margin-top: 6px;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--ink-2);
+}
+
+.mark__words {
+  display: grid;
+  gap: 10px;
+  justify-items: center;
+  text-align: center;
+  margin-top: clamp(34px, 4.4vw, 56px);
+  padding-top: clamp(28px, 3.4vw, 42px);
+  border-top: 1px solid var(--rule-soft);
+}
+
+.mark__words-value {
+  font-family: var(--display);
+  font-size: clamp(2rem, 6vw, 4.2rem);
+  letter-spacing: -0.016em;
+  line-height: 1;
+  color: var(--ink);
+}
+
+.mark__words-body {
+  max-width: 58ch;
+  margin-top: 6px;
+}
+
+@media (min-width: 900px) {
+  .mark__grid {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  }
+}
+
+/* --- Values ---------------------------------------------------------------- */
+
+.values__grid {
+  display: grid;
+  border-top: 1px solid var(--rule-invert);
+}
+
+.values__row {
+  display: grid;
+  gap: 6px 24px;
+  padding-block: clamp(18px, 2.2vw, 26px);
+  border-bottom: 1px solid var(--rule-invert);
+  align-items: baseline;
+  transition: padding-inline 0.5s var(--ease);
+}
+
+.values__word {
+  font-family: var(--display);
+  font-size: clamp(1.5rem, 3.4vw, 2.4rem);
+  letter-spacing: -0.013em;
+  line-height: 1;
+  color: var(--white);
+}
+
+.values__sub {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--beacon);
+}
+
+.values__body {
+  font-size: 0.94rem;
+  line-height: 1.6;
+  color: rgba(255, 253, 250, 0.66);
+  max-width: 52ch;
+}
+
+@media (min-width: 860px) {
+  .values__row {
+    grid-template-columns: minmax(0, 0.55fr) minmax(0, 0.35fr) minmax(0, 1fr);
+  }
+  .values__row:hover {
+    padding-inline: 12px;
+  }
+}
+
+/* --- Chapters -------------------------------------------------------------- */
+
+.chapters {
+  display: grid;
+  gap: 1px;
+  background: var(--rule-soft);
+  border-block: 1px solid var(--rule-soft);
+}
+
+.chapter {
+  display: grid;
+  gap: 10px 28px;
+  padding: clamp(20px, 2.4vw, 28px) 0;
+  background: var(--white);
+}
+
+.chapter__year {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--beacon);
+  padding-top: 5px;
+}
+
+.chapter__body p {
+  margin-top: 9px;
+  font-size: 0.95rem;
+  line-height: 1.64;
+  color: var(--ink-2);
+  max-width: 64ch;
+}
+
+@media (min-width: 760px) {
+  .chapter {
+    grid-template-columns: 130px minmax(0, 1fr);
+  }
+}
+
+/* --- Scope ----------------------------------------------------------------- */
+
+.scope {
+  display: grid;
+  gap: clamp(26px, 3.4vw, 52px);
+  align-items: center;
+}
+
+.scope__frame {
+  aspect-ratio: 1 / 1;
+}
+
+.scope__note {
+  margin-top: 18px;
+}
+
+.scope__cta {
+  margin-top: 22px;
+}
+
+@media (min-width: 900px) {
+  .scope {
+    grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  }
+}

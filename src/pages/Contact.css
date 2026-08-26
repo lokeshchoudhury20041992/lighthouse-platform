@@ -1,0 +1,244 @@
+/* ==========================================================================
+   Contact
+   ========================================================================== */
+
+.channels {
+  display: grid;
+  gap: 1px;
+  background: var(--rule-soft);
+  border: 1px solid var(--rule-soft);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.channel {
+  display: grid;
+  align-content: start;
+  gap: 10px;
+  background: var(--white);
+  padding: clamp(22px, 2.8vw, 32px);
+}
+
+.channel__icon {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  border: 1px solid var(--rule);
+  color: var(--beacon);
+  margin-bottom: 6px;
+}
+
+.channel__title {
+  font-family: var(--display);
+  font-size: clamp(1.2rem, 2.2vw, 1.55rem);
+  letter-spacing: -0.01em;
+  color: var(--ink);
+}
+
+.channel__note {
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: var(--ink-2);
+}
+
+.channel__address {
+  font-style: normal;
+  font-size: 0.98rem;
+  line-height: 1.55;
+  color: var(--ink);
+}
+
+.channel__landmark {
+  font-size: 0.85rem;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.channel__phones {
+  display: grid;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+.channel__phones li {
+  display: grid;
+  gap: 3px;
+}
+
+.channel__phones a {
+  font-family: var(--mono);
+  font-size: clamp(1.05rem, 2vw, 1.28rem);
+  color: var(--ink);
+  transition: color 0.3s var(--ease);
+}
+
+.channel__phones a:hover {
+  color: var(--beacon);
+}
+
+.channel__action {
+  justify-self: start;
+  margin-top: 10px;
+}
+
+@media (min-width: 900px) {
+  .channels {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* --- Appointment ----------------------------------------------------------- */
+
+.appt {
+  display: grid;
+  gap: clamp(26px, 3.4vw, 52px);
+  align-items: center;
+}
+
+.appt__points {
+  display: grid;
+  gap: 0;
+  margin-top: 24px;
+  border-top: 1px solid var(--rule-soft);
+}
+
+.appt__points li {
+  display: grid;
+  grid-template-columns: 24px minmax(0, 1fr);
+  gap: 14px;
+  align-items: start;
+  padding-block: 16px;
+  border-bottom: 1px solid var(--rule-soft);
+  font-size: 0.93rem;
+  line-height: 1.6;
+  color: var(--ink-2);
+}
+
+.appt__points svg {
+  margin-top: 3px;
+  color: var(--beacon);
+}
+
+.appt__points strong {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.appt__frame {
+  aspect-ratio: 4 / 3;
+}
+
+@media (min-width: 900px) {
+  .appt {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  }
+  .appt__frame {
+    aspect-ratio: 4 / 5;
+  }
+}
+
+/* --- Sequence -------------------------------------------------------------- */
+
+.sequence {
+  display: grid;
+  gap: 1px;
+  background: var(--rule-soft);
+  border-block: 1px solid var(--rule-soft);
+}
+
+.sequence__step {
+  background: var(--white);
+  padding: clamp(20px, 2.4vw, 28px) clamp(14px, 2vw, 24px);
+}
+
+.sequence__num {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  color: var(--beacon);
+}
+
+.sequence__title {
+  margin-top: 12px;
+}
+
+.sequence__body {
+  margin-top: 9px;
+  font-size: 0.92rem;
+  line-height: 1.62;
+  color: var(--ink-2);
+}
+
+@media (min-width: 640px) {
+  .sequence {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1000px) {
+  .sequence {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* --- Feedback -------------------------------------------------------------- */
+
+.feedback {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  padding-block: clamp(54px, 7vw, 100px);
+}
+
+.feedback__bg {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.28;
+}
+
+.feedback::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    to right,
+    rgba(14, 44, 54, 0.96) 20%,
+    rgba(14, 44, 54, 0.72) 68%,
+    rgba(14, 44, 54, 0.9)
+  );
+}
+
+.feedback__inner {
+  display: grid;
+  gap: 18px;
+  max-width: 60ch;
+}
+
+.feedback__horizon {
+  color: var(--beacon);
+}
+
+.feedback__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+/* --- Urgent ---------------------------------------------------------------- */
+
+.urgent {
+  border-left-color: var(--clay);
+  max-width: 86ch;
+}
+
+.urgent .notice__head {
+  color: var(--clay);
+}

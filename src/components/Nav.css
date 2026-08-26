@@ -1,0 +1,241 @@
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 900;
+  background: color-mix(in srgb, var(--paper) 82%, transparent);
+  backdrop-filter: saturate(1.4) blur(14px);
+  -webkit-backdrop-filter: saturate(1.4) blur(14px);
+  border-bottom: 1px solid transparent;
+  transition:
+    border-color 0.4s var(--ease),
+    background-color 0.4s var(--ease);
+}
+
+.nav--condensed {
+  border-bottom-color: var(--rule-soft);
+  background: color-mix(in srgb, var(--paper) 92%, transparent);
+}
+
+.nav__bar {
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 3vw, 44px);
+  min-height: var(--nav-h);
+  padding-inline: var(--edge);
+}
+
+.nav__brand {
+  flex: none;
+  display: block;
+  transition: opacity 0.3s var(--ease);
+}
+
+.nav__brand:hover {
+  opacity: 0.72;
+}
+
+.nav__brand img {
+  width: auto;
+  height: 40px;
+  transition: height 0.4s var(--ease);
+}
+
+.nav--condensed .nav__brand img {
+  height: 34px;
+}
+
+.nav__links {
+  display: none;
+  align-items: center;
+  gap: clamp(14px, 1.9vw, 30px);
+  margin-inline-end: auto;
+}
+
+.nav__link {
+  position: relative;
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: var(--ink-2);
+  padding-block: 6px;
+  transition: color 0.3s var(--ease);
+  white-space: nowrap;
+}
+
+.nav__link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  background: var(--beacon);
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.45s var(--ease);
+}
+
+.nav__link:hover,
+.nav__link.is-active {
+  color: var(--ink);
+}
+
+.nav__link:hover::after,
+.nav__link.is-active::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.nav__actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-inline-start: auto;
+}
+
+.nav__cta {
+  display: none;
+  padding: 11px 19px;
+  font-size: 0.83rem;
+}
+
+/* Two-line toggle that crosses into an X. */
+.nav__toggle {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  background: transparent;
+  cursor: pointer;
+  transition: border-color 0.3s var(--ease);
+}
+
+.nav__toggle:hover {
+  border-color: var(--teal);
+}
+
+.nav__toggle-box {
+  position: relative;
+  width: 17px;
+  height: 10px;
+}
+
+.nav__toggle-box span {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 1.4px;
+  border-radius: 2px;
+  background: var(--ink);
+  transition: transform 0.45s var(--ease);
+}
+
+.nav__toggle-box span:first-child {
+  top: 0;
+}
+
+.nav__toggle-box span:last-child {
+  bottom: 0;
+}
+
+.nav--open .nav__toggle-box span:first-child {
+  transform: translateY(4.3px) rotate(45deg);
+}
+
+.nav--open .nav__toggle-box span:last-child {
+  transform: translateY(-4.3px) rotate(-45deg);
+}
+
+/* --- Slide-down panel --- */
+
+.nav__panel {
+  border-top: 1px solid var(--rule-soft);
+  padding: clamp(20px, 5vw, 34px) var(--edge) clamp(28px, 6vw, 40px);
+  background: var(--paper);
+  max-height: calc(100dvh - var(--nav-h));
+  overflow-y: auto;
+}
+
+.nav__panel[hidden] {
+  display: none;
+}
+
+.nav__panel-list {
+  display: grid;
+  gap: 2px;
+  margin-bottom: 24px;
+}
+
+.nav__panel-link {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  padding-block: 12px;
+  border-bottom: 1px solid var(--rule-soft);
+  font-family: var(--display);
+  font-size: clamp(1.5rem, 7vw, 2.1rem);
+  letter-spacing: -0.012em;
+  color: var(--ink);
+  opacity: 0;
+  transform: translateY(12px);
+  animation: nav-item 0.55s var(--ease-out) forwards;
+  animation-delay: calc(var(--i) * 55ms + 60ms);
+}
+
+.nav__panel-link .index-num {
+  flex: none;
+}
+
+.nav__panel-link.active {
+  color: var(--teal);
+}
+
+@keyframes nav-item {
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.nav__panel-cta {
+  width: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav__panel-link {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+}
+
+@media (min-width: 640px) {
+  .nav__cta {
+    display: inline-flex;
+  }
+  .nav__panel-cta {
+    width: auto;
+  }
+}
+
+@media (min-width: 1000px) {
+  :root {
+    --nav-h: 88px;
+  }
+  .nav__brand img {
+    height: 50px;
+  }
+  .nav--condensed .nav__brand img {
+    height: 42px;
+  }
+  .nav__links {
+    display: flex;
+  }
+  .nav__toggle {
+    display: none;
+  }
+  .nav__panel {
+    display: none;
+  }
+}

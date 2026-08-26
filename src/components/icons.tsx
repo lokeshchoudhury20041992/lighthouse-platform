@@ -330,3 +330,82 @@ export function IconZap({ className, size = 20 }: IconProps) {
   )
 }
 
+
+export function IconPhone({ className, size = 20 }: IconProps) {
+  return (
+    <svg {...base} width={size} height={size} className={className}>
+      <path d="M21.5 16.9v2.8a1.9 1.9 0 0 1-2.1 1.9 18.7 18.7 0 0 1-8.2-2.9 18.4 18.4 0 0 1-5.7-5.7A18.7 18.7 0 0 1 2.6 4.7 1.9 1.9 0 0 1 4.5 2.6h2.8a1.9 1.9 0 0 1 1.9 1.6c.1 1 .4 1.9.7 2.8a1.9 1.9 0 0 1-.4 2l-1.2 1.2a15 15 0 0 0 5.7 5.7l1.2-1.2a1.9 1.9 0 0 1 2-.4c.9.3 1.8.6 2.8.7a1.9 1.9 0 0 1 1.6 1.9Z" />
+    </svg>
+  )
+}
+
+export function IconWhatsApp({ className, size = 20 }: IconProps) {
+  return (
+    <svg {...base} width={size} height={size} className={className}>
+      <path d="M3.4 20.6 4.8 16a8.4 8.4 0 1 1 3.3 3.2l-4.7 1.4Z" />
+      <path d="M9 9c0 3.3 2.7 6 6 6 .6 0 1-.6 1-1.2v-.6l-1.8-.8-.9 1a5.6 5.6 0 0 1-2.7-2.7l1-.9-.8-1.8h-.6C9.6 8 9 8.4 9 9Z" />
+    </svg>
+  )
+}
+
+export function IconClock({ className, size = 20 }: IconProps) {
+  return (
+    <svg {...base} width={size} height={size} className={className}>
+      <circle cx="12" cy="12" r="9" />
+      <polyline points="12 6.8 12 12 15.4 13.8" />
+    </svg>
+  )
+}
+
+export function IconMail({ className, size = 20 }: IconProps) {
+  return (
+    <svg {...base} width={size} height={size} className={className}>
+      <rect x="2.6" y="4.8" width="18.8" height="14.4" rx="2.2" />
+      <path d="m3.4 6.6 8.6 6 8.6-6" />
+    </svg>
+  )
+}
+
+export function IconMoonStars({ className, size = 20 }: IconProps) {
+  return (
+    <svg {...base} width={size} height={size} className={className}>
+      <path d="M20.4 14.2A8.6 8.6 0 0 1 9.8 3.6a8.6 8.6 0 1 0 10.6 10.6Z" />
+      <path d="M17.6 3v3.2M16 4.6h3.2" opacity="0.8" />
+    </svg>
+  )
+}
+
+export function IconQuote({ className, size = 20 }: IconProps) {
+  return (
+    <svg {...base} width={size} height={size} className={className}>
+      <path d="M9.4 6.2C6.6 7.4 5 9.8 5 13v4.8h5.6V12H7.9c0-2 .8-3.4 2.4-4.2Z" />
+      <path d="M19 6.2c-2.8 1.2-4.4 3.6-4.4 6.8v4.8h5.6V12h-2.7c0-2 .8-3.4 2.4-4.2Z" />
+    </svg>
+  )
+}
+
+export function IconPlus({ className, size = 20 }: IconProps) {
+  return (
+    <svg {...base} width={size} height={size} className={className}>
+      <path d="M12 5.4v13.2M5.4 12h13.2" />
+    </svg>
+  )
+}
+
+export function IconArrowUpRight({ className, size = 20 }: IconProps) {
+  return (
+    <svg {...base} width={size} height={size} className={className}>
+      <path d="M7 17 17 7" />
+      <polyline points="8.4 7 17 7 17 15.6" />
+    </svg>
+  )
+}
+
+export function IconBookOpen({ className, size = 20 }: IconProps) {
+  return (
+    <svg {...base} width={size} height={size} className={className}>
+      <path d="M2.8 5.2h5.6c1.9 0 3.6 1 3.6 2.6v11c0-1.2-1.4-2.2-3.2-2.2H2.8Z" />
+      <path d="M21.2 5.2h-5.6c-1.9 0-3.6 1-3.6 2.6v11c0-1.2 1.4-2.2 3.2-2.2h6Z" />
+    </svg>
+  )
+}

@@ -1,59 +1,63 @@
 /* ==========================================================================
-   Lighthouse — foundation
-   Light-only, editorial healthcare palette. Tokens first, then a thin reset.
+   LIGHTHOUSE — foundation
+   Palette sampled straight from the mark: deep teal ink (#215a6b) and beacon
+   cyan (#019bfd), set on warm paper rather than clinical white. The warm/cool
+   collision is the whole point — it keeps a healthcare site from reading cold.
    ========================================================================== */
 
 :root {
-  /* Ink */
-  --lh-navy: #0b1f35;
-  --lh-navy-soft: #16324e;
-  --lh-ink: #3d5269;
-  --lh-muted: #6c839d;
+  /* Ink — the teal family from the logotype */
+  --ink: #0e2c36;
+  --ink-2: #1b4a58;
+  --teal: #215a6b;
+  --teal-soft: #4b7f8e;
+  --muted: #6c8b95;
 
-  /* Lighthouse blue */
-  --lh-blue: #2563eb;
-  --lh-blue-deep: #1b46b4;
-  --lh-blue-light: #6f9cf3;
-  --lh-blue-wash: #e4eeff;
+  /* Beacon — the cyan bars under the horizon line */
+  --beacon: #019bfd;
+  --beacon-deep: #0072c6;
+  --beacon-wash: #dcf0ff;
 
-  /* Atmosphere */
-  --lh-white: #ffffff;
-  --lh-mist: #f8fbff;
-  --lh-ice: #eef6ff;
-  --lh-gold: #d69b32;
+  /* Paper — warm ground, the counterweight to all that teal */
+  --paper: #f6f2ea;
+  --paper-2: #efe9dd;
+  --paper-3: #e7dfd0;
+  --white: #fffdfa;
+  --sand: #d8c9ad;
+  --clay: #b9714f;
 
-  /* Lines & glass */
-  --lh-line: rgba(37, 99, 235, 0.13);
-  --lh-line-soft: rgba(37, 99, 235, 0.09);
-  --lh-glass: rgba(255, 255, 255, 0.62);
-  --lh-glass-strong: rgba(255, 255, 255, 0.76);
+  /* Structure */
+  --rule: rgba(33, 90, 107, 0.18);
+  --rule-soft: rgba(33, 90, 107, 0.1);
+  --rule-invert: rgba(255, 253, 250, 0.16);
 
-  /* Shadows — soft and blue-tinted, never heavy */
-  --lh-shadow-sm: 0 2px 10px rgba(11, 31, 53, 0.04);
-  --lh-shadow-md: 0 18px 42px -22px rgba(11, 31, 53, 0.28);
-  --lh-shadow-lg: 0 40px 90px -46px rgba(11, 31, 53, 0.34);
-  --lh-shadow-blue: 0 16px 34px -16px rgba(37, 99, 235, 0.42);
+  --shadow-sm: 0 1px 2px rgba(14, 44, 54, 0.05);
+  --shadow-md: 0 20px 44px -28px rgba(14, 44, 54, 0.4);
+  --shadow-lg: 0 48px 90px -52px rgba(14, 44, 54, 0.5);
 
   /* Type */
-  --font-display: 'Playfair Display', 'Iowan Old Style', 'Palatino Linotype',
-    Georgia, 'Times New Roman', serif;
-  --font-sans: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    'Helvetica Neue', Arial, sans-serif;
+  --display: 'Instrument Serif', 'Iowan Old Style', Palatino, Georgia, serif;
+  --sans: 'Inter Tight', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --mono: 'DM Mono', ui-monospace, 'SF Mono', Menlo, monospace;
 
-  /* Layout rhythm */
-  --gutter: clamp(28px, 5vw, 84px);
-  --shell: 1640px;
-  --edge: max(var(--gutter), calc((100vw - var(--shell)) / 2 + var(--gutter)));
-  --nav-h: clamp(76px, 8vh, 104px);
+  /* Rhythm — deliberately tight. Sections should touch, not float apart. */
+  --sec-y: clamp(52px, 6vw, 92px);
+  --sec-y-lg: clamp(64px, 7.5vw, 116px);
+  --gutter: clamp(20px, 4.5vw, 64px);
+  --shell: 1440px;
+  --edge: max(var(--gutter), calc((100vw - var(--shell)) / 2));
+  --nav-h: 76px;
 
+  --arch: 50vw 50vw 4px 4px;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 
   color-scheme: light;
-  font-family: var(--font-sans);
+  font-family: var(--sans);
   font-size: 16px;
-  line-height: 1.6;
-  color: var(--lh-ink);
-  background: var(--lh-white);
+  line-height: 1.62;
+  color: var(--ink-2);
+  background: var(--paper);
   font-synthesis-weight: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -68,36 +72,61 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--nav-h) + 16px);
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
   margin: 0;
-  background: var(--lh-white);
+  background: var(--paper);
   overflow-x: hidden;
+}
+
+/* Paper grain. One repeated SVG tile, fixed, so it never scrolls out of phase. */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.4;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.32'/%3E%3C/svg%3E");
 }
 
 h1,
 h2,
-h3 {
-  font-family: var(--font-display);
-  color: var(--lh-navy);
-  font-weight: 500;
+h3,
+h4 {
+  font-family: var(--display);
+  color: var(--ink);
+  font-weight: 400;
+  letter-spacing: -0.006em;
+  line-height: 1.04;
   margin: 0;
+  text-wrap: balance;
 }
 
-p,
+p {
+  margin: 0;
+  text-wrap: pretty;
+}
+
 ul,
+ol,
 figure {
   margin: 0;
 }
 
-ul {
+ul,
+ol {
   list-style: none;
   padding: 0;
 }
 
 img,
-svg {
+svg,
+video {
   display: block;
   max-width: 100%;
 }
@@ -107,99 +136,436 @@ a {
   text-decoration: none;
 }
 
+button {
+  font: inherit;
+  color: inherit;
+}
+
+::selection {
+  background: var(--beacon);
+  color: var(--white);
+}
+
 :focus-visible {
-  outline: 2px solid var(--lh-blue);
+  outline: 2px solid var(--beacon);
   outline-offset: 3px;
-  border-radius: 6px;
+  border-radius: 4px;
+}
+
+/* --------------------------------------------------------------------------
+   Layout primitives
+   -------------------------------------------------------------------------- */
+
+.shell {
+  padding-inline: var(--edge);
+}
+
+.section {
+  position: relative;
+  padding-block: var(--sec-y);
+  padding-inline: var(--edge);
+}
+
+.section--lg {
+  padding-block: var(--sec-y-lg);
+}
+
+.section--flush-top {
+  padding-top: 0;
+}
+
+.section--flush-bottom {
+  padding-bottom: 0;
+}
+
+/* Alternating grounds — these carry the rhythm now that the padding is tight. */
+.section--paper {
+  background: var(--paper);
+}
+
+.section--paper-2 {
+  background: var(--paper-2);
+}
+
+.section--white {
+  background: var(--white);
+}
+
+.section--ink {
+  background: var(--ink);
+  color: rgba(255, 253, 250, 0.76);
+}
+
+.section--ink h1,
+.section--ink h2,
+.section--ink h3,
+.section--ink h4 {
+  color: var(--white);
+}
+
+/* Hairline that reads as structure rather than decoration. */
+.rule {
+  height: 1px;
+  border: 0;
+  background: var(--rule);
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Editorial type scale
+   -------------------------------------------------------------------------- */
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--teal);
+}
+
+.eyebrow::before {
+  content: '';
+  width: 22px;
+  height: 1px;
+  background: var(--beacon);
+  flex: none;
+}
+
+.section--ink .eyebrow {
+  color: var(--beacon);
+}
+
+.section--ink .eyebrow::before {
+  background: var(--beacon);
+}
+
+.index-num {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+}
+
+.t-display {
+  font-size: clamp(2.3rem, 6.1vw, 6.1rem);
+  line-height: 0.92;
+  letter-spacing: -0.016em;
+}
+
+.t-h1 {
+  font-size: clamp(1.95rem, 6vw, 4.8rem);
+  line-height: 0.96;
+  letter-spacing: -0.014em;
+}
+
+.t-h2 {
+  font-size: clamp(1.65rem, 4vw, 3.3rem);
+  line-height: 1.02;
+  letter-spacing: -0.012em;
+}
+
+.t-h3 {
+  font-size: clamp(1.3rem, 2.1vw, 1.7rem);
+  line-height: 1.14;
+  letter-spacing: -0.008em;
+}
+
+.t-lead {
+  font-size: clamp(1.02rem, 1.35vw, 1.2rem);
+  line-height: 1.58;
+  color: var(--ink-2);
+  max-width: 62ch;
+}
+
+.section--ink .t-lead {
+  color: rgba(255, 253, 250, 0.78);
+}
+
+.t-body {
+  font-size: 1rem;
+  color: var(--ink-2);
+  max-width: 68ch;
+}
+
+.section--ink .t-body {
+  color: rgba(255, 253, 250, 0.72);
+}
+
+.t-small {
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+
+/* Italic serif accent — the one flourish, used sparingly. */
+.accent {
+  font-style: italic;
+  color: var(--teal);
+}
+
+.section--ink .accent {
+  color: var(--beacon);
+}
+
+/* --------------------------------------------------------------------------
+   Buttons
+   -------------------------------------------------------------------------- */
+
+.btn {
+  --lift: -2px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: var(--sans);
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  line-height: 1;
+  padding: 15px 24px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  white-space: nowrap;
+  transition:
+    transform 0.5s var(--ease),
+    background-color 0.35s var(--ease),
+    border-color 0.35s var(--ease),
+    color 0.35s var(--ease),
+    box-shadow 0.45s var(--ease);
+}
+
+.btn:hover {
+  transform: translateY(var(--lift));
+}
+
+.btn--primary {
+  color: var(--white);
+  background: var(--ink);
+  box-shadow: var(--shadow-md);
+}
+
+.btn--primary:hover {
+  background: var(--teal);
+}
+
+.btn--beacon {
+  color: var(--white);
+  background: var(--beacon);
+  box-shadow: 0 16px 32px -18px rgba(1, 155, 253, 0.9);
+}
+
+.btn--beacon:hover {
+  background: var(--beacon-deep);
+}
+
+.btn--ghost {
+  color: var(--ink);
+  background: transparent;
+  border-color: var(--rule);
+}
+
+.btn--ghost:hover {
+  border-color: var(--teal);
+  background: rgba(33, 90, 107, 0.05);
+}
+
+.section--ink .btn--ghost {
+  color: var(--white);
+  border-color: var(--rule-invert);
+}
+
+.section--ink .btn--ghost:hover {
+  border-color: rgba(255, 253, 250, 0.5);
+  background: rgba(255, 253, 250, 0.08);
+}
+
+.btn--lg {
+  padding: 18px 30px;
+  font-size: 0.95rem;
+}
+
+.btn__arrow {
+  transition: transform 0.45s var(--ease);
+}
+
+.btn:hover .btn__arrow {
+  transform: translateX(4px);
+}
+
+/* Text link with an underline that draws itself in. */
+.link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-weight: 500;
+  color: var(--ink);
+  padding-bottom: 2px;
+}
+
+.link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+  background: currentColor;
+  transform-origin: right;
+  transform: scaleX(1);
+  transition: transform 0.45s var(--ease);
+}
+
+.link:hover::after {
+  transform-origin: left;
+  animation: link-redraw 0.55s var(--ease);
+}
+
+@keyframes link-redraw {
+  0% {
+    transform: scaleX(1);
+    transform-origin: right;
+  }
+  49% {
+    transform: scaleX(0);
+    transform-origin: right;
+  }
+  50% {
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  100% {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   The arch — lifted straight from the mark, used to frame photography
+   -------------------------------------------------------------------------- */
+
+.arch {
+  border-radius: var(--arch);
+  overflow: hidden;
+  background: var(--paper-3);
+}
+
+.arch img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.frame {
+  overflow: hidden;
+  border-radius: 3px;
+  background: var(--paper-3);
+}
+
+.frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Slow zoom on hover — barely perceptible, which is the idea. */
+.zoomable img {
+  transition: transform 1.4s var(--ease-out);
+}
+
+.zoomable:hover img {
+  transform: scale(1.045);
+}
+
+/* --------------------------------------------------------------------------
+   Scroll reveal — content is visible unless JS has confirmed it can animate
+   -------------------------------------------------------------------------- */
+
+.lh-reveal-ready .reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition:
+    opacity 0.9s var(--ease-out),
+    transform 0.9s var(--ease-out);
+  transition-delay: var(--d, 0s);
+}
+
+.lh-reveal-ready .reveal.in {
+  opacity: 1;
+  transform: none;
+}
+
+/* Masked line reveal for headlines.
+   The mask clips to the line box, which at these tight line-heights sits above
+   the descenders — so pad the clip open and pull the same amount back off the
+   flow, keeping the rhythm identical while "y", "g" and "p" stay whole. */
+.lh-reveal-ready .reveal-line {
+  display: block;
+  overflow: hidden;
+  padding-bottom: 0.18em;
+  margin-bottom: -0.18em;
+}
+
+.lh-reveal-ready .reveal-line > * {
+  display: block;
+  transform: translateY(130%);
+  transition: transform 1s var(--ease-out);
+  transition-delay: var(--d, 0s);
+}
+
+.lh-reveal-ready .reveal-line.in > * {
+  transform: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
-}
-
-/* --------------------------------------------------------------------------
-   Shared buttons
-   -------------------------------------------------------------------------- */
-
-.btn {
-  --btn-lift: -2px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  font-family: var(--font-sans);
-  font-size: 15px;
-  font-weight: 500;
-  letter-spacing: -0.01em;
-  line-height: 1;
-  padding: 15px 26px;
-  border-radius: 999px;
-  border: 1px solid transparent;
-  cursor: pointer;
-  white-space: nowrap;
-  transition:
-    transform 0.4s var(--ease),
-    box-shadow 0.4s var(--ease),
-    background-color 0.35s var(--ease),
-    border-color 0.35s var(--ease),
-    color 0.35s var(--ease);
-}
-
-.btn--lg {
-  font-size: 16px;
-  padding: 18px 32px;
-}
-
-.btn--primary {
-  color: #fff;
-  background-image: linear-gradient(135deg, var(--lh-navy) 0%, #123a72 52%, var(--lh-blue-deep) 100%);
-  box-shadow:
-    var(--lh-shadow-blue),
-    inset 0 1px 0 rgba(255, 255, 255, 0.16);
-}
-
-.btn--primary:hover {
-  transform: translateY(var(--btn-lift));
-  box-shadow:
-    0 22px 44px -16px rgba(37, 99, 235, 0.5),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
-}
-
-.btn--ghost {
-  color: var(--lh-navy);
-  background: rgba(255, 255, 255, 0.72);
-  backdrop-filter: blur(10px);
-  border-color: rgba(37, 99, 235, 0.2);
-  box-shadow: var(--lh-shadow-sm);
-}
-
-.btn--ghost:hover {
-  transform: translateY(var(--btn-lift));
-  border-color: rgba(37, 99, 235, 0.36);
-  background: #fff;
-  box-shadow: 0 14px 30px -18px rgba(11, 31, 53, 0.32);
-}
-
-.btn__arrow {
-  transition: transform 0.4s var(--ease);
-}
-
-.btn:hover .btn__arrow {
-  transform: translateX(3px);
-}
-
-.btn__lead {
-  color: var(--lh-blue);
-}
-
-@media (prefers-reduced-motion: reduce) {
+  .lh-reveal-ready .reveal,
+  .lh-reveal-ready .reveal-line > * {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
   .btn {
-    --btn-lift: 0px;
+    --lift: 0px;
   }
-  .btn__arrow,
-  .btn:hover .btn__arrow {
-    transform: none;
+  .zoomable img,
+  .btn__arrow {
+    transition: none;
   }
+}
+
+/* Screen-reader-only, and the skip link that uses it. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.skip-link {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  z-index: 10000;
+  padding: 12px 18px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--white);
+  font-size: 0.85rem;
+  transform: translateY(-160%);
+  transition: transform 0.3s var(--ease);
+}
+
+.skip-link:focus-visible {
+  transform: none;
 }

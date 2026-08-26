@@ -1,0 +1,168 @@
+/* ==========================================================================
+   Services
+   ========================================================================== */
+
+.pagehead__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.svc-list {
+  display: grid;
+  border-top: 1px solid var(--rule-soft);
+}
+
+.svc-card {
+  display: grid;
+  gap: 12px 40px;
+  padding-block: clamp(22px, 2.8vw, 34px);
+  border-bottom: 1px solid var(--rule-soft);
+  scroll-margin-top: calc(var(--nav-h) + 24px);
+}
+
+.svc-card__head {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+}
+
+.svc-card__title {
+  font-family: var(--display);
+  font-size: clamp(1.3rem, 2.6vw, 1.95rem);
+  letter-spacing: -0.012em;
+  line-height: 1.06;
+  color: var(--ink);
+}
+
+.svc-card__blurb {
+  font-family: var(--display);
+  font-style: italic;
+  font-size: clamp(1rem, 1.6vw, 1.14rem);
+  line-height: 1.42;
+  color: var(--teal);
+  max-width: 54ch;
+}
+
+.svc-card__detail {
+  margin-top: 12px;
+  font-size: 0.95rem;
+  line-height: 1.66;
+  color: var(--ink-2);
+  max-width: 66ch;
+}
+
+.svc-card__tags {
+  margin-top: 16px;
+}
+
+.svc-card__ask {
+  margin-top: 18px;
+  font-size: 0.88rem;
+  color: var(--teal);
+}
+
+@media (min-width: 860px) {
+  .svc-card {
+    grid-template-columns: minmax(0, 0.62fr) minmax(0, 1fr);
+    align-items: start;
+  }
+  .svc-card__head {
+    position: sticky;
+    top: calc(var(--nav-h) + 18px);
+  }
+}
+
+/* --- Photo strip ----------------------------------------------------------- */
+
+.svc-strip {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--rule-soft);
+}
+
+.svc-strip__frame {
+  aspect-ratio: 4 / 5;
+  border-radius: 0;
+}
+
+@media (min-width: 800px) {
+  .svc-strip {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .svc-strip__frame {
+    aspect-ratio: 3 / 4;
+  }
+}
+
+/* --- FAQ ------------------------------------------------------------------- */
+
+.faq {
+  display: grid;
+  border-top: 1px solid var(--rule);
+}
+
+.faq__item {
+  border-bottom: 1px solid var(--rule);
+}
+
+.faq__q {
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr) 24px;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  padding-block: clamp(16px, 2vw, 22px);
+  background: none;
+  border: 0;
+  cursor: pointer;
+  text-align: left;
+  color: var(--ink);
+  transition: color 0.3s var(--ease);
+}
+
+.faq__q:hover {
+  color: var(--teal);
+}
+
+.faq__q-text {
+  font-family: var(--display);
+  font-size: clamp(1.05rem, 2vw, 1.42rem);
+  letter-spacing: -0.009em;
+  line-height: 1.2;
+  font-weight: 400;
+}
+
+.faq__icon {
+  justify-self: end;
+  color: var(--beacon);
+  transition: transform 0.45s var(--ease);
+}
+
+.faq__item.is-open .faq__icon {
+  transform: rotate(135deg);
+}
+
+.faq__panel {
+  padding: 0 24px clamp(18px, 2.2vw, 26px) 48px;
+}
+
+.faq__panel[hidden] {
+  display: none;
+}
+
+.faq__panel p {
+  font-size: 0.95rem;
+  line-height: 1.68;
+  color: var(--ink-2);
+  max-width: 72ch;
+}
+
+@media (max-width: 560px) {
+  .faq__panel {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}

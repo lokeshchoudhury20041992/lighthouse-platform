@@ -1,0 +1,321 @@
+/* ==========================================================================
+   Shared page furniture — page mastheads, section heads, closing CTA, cards.
+   ========================================================================== */
+
+/* --- Page masthead --------------------------------------------------------- */
+
+.pagehead {
+  padding-block: clamp(34px, 5vw, 62px) clamp(28px, 4vw, 48px);
+  border-bottom: 1px solid var(--rule-soft);
+}
+
+.pagehead__meta {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.pagehead__title {
+  max-width: 20ch;
+}
+
+.pagehead__body {
+  display: grid;
+  gap: 18px;
+  margin-top: clamp(22px, 3vw, 34px);
+  padding-top: clamp(20px, 2.6vw, 28px);
+  border-top: 1px solid var(--rule-soft);
+}
+
+.pagehead__horizon {
+  color: var(--beacon);
+}
+
+.pagehead__standfirst {
+  max-width: 66ch;
+}
+
+@media (min-width: 900px) {
+  .pagehead__body {
+    grid-template-columns: 200px minmax(0, 1fr);
+    align-items: start;
+    gap: 40px;
+  }
+  .pagehead__horizon {
+    margin-top: 6px;
+  }
+}
+
+/* --- Section head ---------------------------------------------------------- */
+
+.sechead {
+  display: grid;
+  gap: 16px;
+  margin-bottom: clamp(26px, 3.4vw, 44px);
+}
+
+.sechead__meta {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.sechead__title {
+  max-width: 22ch;
+}
+
+.sechead__aside {
+  display: grid;
+  gap: 18px;
+  justify-items: start;
+  align-content: start;
+}
+
+.sechead--center {
+  justify-items: center;
+  text-align: center;
+}
+
+.sechead--center .sechead__meta {
+  justify-content: center;
+}
+
+.sechead--center .sechead__title,
+.sechead--center .sechead__aside {
+  margin-inline: auto;
+  justify-items: center;
+  text-align: center;
+}
+
+@media (min-width: 900px) {
+  .sechead--split {
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+    align-items: end;
+    gap: clamp(28px, 4vw, 64px);
+  }
+  .sechead--split .sechead__aside {
+    padding-bottom: 5px;
+  }
+}
+
+/* --- Closing CTA band ------------------------------------------------------ */
+
+.ctaband {
+  display: grid;
+  justify-items: center;
+  text-align: center;
+  gap: 20px;
+  padding-block: clamp(56px, 7vw, 104px);
+  overflow: hidden;
+}
+
+.ctaband__horizon {
+  color: var(--beacon);
+}
+
+.ctaband__title {
+  max-width: 18ch;
+}
+
+.ctaband__body {
+  max-width: 56ch;
+}
+
+.ctaband__actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+/* --- Reusable cards -------------------------------------------------------- */
+
+/* An index row: number, title, description, arrow. Used for services + journey. */
+.rowcard {
+  position: relative;
+  display: grid;
+  gap: 8px 24px;
+  padding-block: clamp(20px, 2.4vw, 28px);
+  border-top: 1px solid var(--rule-soft);
+  transition: background-color 0.45s var(--ease);
+}
+
+.rowcard:last-child {
+  border-bottom: 1px solid var(--rule-soft);
+}
+
+.rowcard__num {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+  padding-top: 6px;
+}
+
+.rowcard__title {
+  font-family: var(--display);
+  font-size: clamp(1.25rem, 2.3vw, 1.8rem);
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  color: var(--ink);
+}
+
+.rowcard__body {
+  font-size: 0.95rem;
+  color: var(--ink-2);
+  max-width: 56ch;
+}
+
+@media (min-width: 800px) {
+  .rowcard {
+    grid-template-columns: 56px minmax(0, 1fr) minmax(0, 1fr);
+    align-items: start;
+  }
+}
+
+/* Tag pills for "who this is for". */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tag {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--teal);
+  padding: 5px 10px;
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.section--ink .tag {
+  color: var(--beacon);
+  border-color: var(--rule-invert);
+}
+
+/* Notice block for the disclaimers this practice genuinely needs. */
+.notice {
+  display: grid;
+  gap: 10px;
+  padding: clamp(18px, 2.4vw, 26px);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--beacon);
+  border-radius: 3px;
+  background: var(--white);
+}
+
+.notice__head {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--teal);
+}
+
+.notice p {
+  font-size: 0.92rem;
+  line-height: 1.62;
+  color: var(--ink-2);
+}
+
+.section--ink .notice {
+  background: rgba(255, 253, 250, 0.05);
+  border-color: var(--rule-invert);
+  border-left-color: var(--beacon);
+}
+
+.section--ink .notice p {
+  color: rgba(255, 253, 250, 0.72);
+}
+
+.section--ink .notice__head {
+  color: var(--beacon);
+}
+
+/* Editorial two-column body copy. */
+.prose {
+  display: grid;
+  gap: 18px;
+  max-width: 68ch;
+}
+
+.prose p {
+  font-size: 1rem;
+  line-height: 1.68;
+  color: var(--ink-2);
+}
+
+.prose h3 {
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  margin-top: 12px;
+}
+
+/* A blockquote that carries real weight. */
+.pullquote {
+  font-family: var(--display);
+  font-size: clamp(1.4rem, 3.2vw, 2.35rem);
+  line-height: 1.16;
+  letter-spacing: -0.011em;
+  color: var(--ink);
+  max-width: 20ch;
+}
+
+.section--ink .pullquote {
+  color: var(--white);
+}
+
+/* Stat / fact strip. */
+.facts {
+  display: grid;
+  gap: 1px;
+  background: var(--rule-soft);
+  border-block: 1px solid var(--rule-soft);
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.fact {
+  background: var(--paper);
+  padding: clamp(18px, 2.4vw, 28px) clamp(14px, 2vw, 24px);
+}
+
+.section--white .fact {
+  background: var(--white);
+}
+
+.fact__value {
+  display: block;
+  font-family: var(--display);
+  font-size: clamp(1.8rem, 4vw, 2.9rem);
+  letter-spacing: -0.014em;
+  line-height: 1;
+  color: var(--ink);
+}
+
+.fact__label {
+  display: block;
+  margin-top: 8px;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--teal);
+}
+
+.fact__note {
+  margin-top: 6px;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+
+@media (min-width: 780px) {
+  .facts {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
